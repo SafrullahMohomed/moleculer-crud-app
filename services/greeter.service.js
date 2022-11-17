@@ -1,0 +1,104 @@
+"use strict";
+
+/**
+ * @typedef {import('moleculer').Context} Context Moleculer's Context
+ */
+
+module.exports = {
+	name: "greeter",
+
+	/**
+	 * Settings
+	 */
+	settings: {
+
+	},
+
+	/**
+	 * Dependencies
+	 */
+	dependencies: [],
+
+	/**
+	 * Actions
+	 */
+	actions: {
+
+		/**
+		 * Say a 'Hello' action.
+		 *
+		 * @returns
+		 */
+		hello: {
+			rest: {
+				method: "GET",
+				path: "/hello"
+			},
+			params:{
+				// con :{type: "string"},
+				
+			},
+
+			async handler(ctx) {
+				const obj = {
+					title : ctx.params.title,
+					content: ctx.params.con,
+					votes: ctx.params.votes
+				};
+
+				return obj;
+			}
+		},
+
+		/**
+		 * Welcome, a username
+		 *
+		 * @param {String} name - User name
+		 */
+		welcome: {
+			rest: "/welcome",
+			params: {
+				name: "string"
+			},
+			/** @param {Context} ctx  */
+			async handler(ctx) {
+				return `Welcome, ${ctx.params.name}`;
+			}
+		}
+	},
+
+	/**
+	 * Events
+	 */
+	events: {
+
+	},
+
+	/**
+	 * Methods
+	 */
+	methods: {
+
+	},
+
+	/**
+	 * Service created lifecycle event handler
+	 */
+	created() {
+
+	},
+
+	/**
+	 * Service started lifecycle event handler
+	 */
+	async started() {
+
+	},
+
+	/**
+	 * Service stopped lifecycle event handler
+	 */
+	async stopped() {
+
+	}
+};
